@@ -1,0 +1,44 @@
+  int debit_Amont = 0;
+  int debit_Aval = 0;
+  int Etat_électrovanne = 0;
+  
+
+void setup() {
+  Serial.begin(9600);
+}
+void loop() {
+  
+  
+    // communication instrument #9 "Capteur Amont" 
+ 
+  Serial.print("#9M");      //Ecriture sur l'instrument n°9 (ici une Jauge Verticale)
+  Serial.print(debit_Amont);
+  Serial.println("<");
+ 
+    // communication instrument #2 "Capteur Aval"
+ 
+  Serial.print("#2M");      //Ecriture sur l'instrument n°2 (ici une Jauge Verticale)
+  Serial.print(debit_Aval);
+  Serial.println("<");
+ 
+    //communication instrument #3 Etat électrovanne
+  
+  Serial.print("#3M");      //Ecriture sur l'instrument n°3 (ici une LED) 
+  Serial.print(2);          //LED vert sur l'IHM 
+  Serial.println("<");
+
+  delay(500);
+ 
+  if (debit_Amont =! debit_Aval){
+0
+    //Envoie de l'orde à la station : fermeture électrovanne
+  
+    //communication instrument #3 "Etat électrovanne"
+  
+  Serial.print("#3M")  
+  Serial.print(Etat_électrovanne);           //LED rouge sur l'IHM  
+  Serial.println("<");
+
+  delay(500);
+}
+}
