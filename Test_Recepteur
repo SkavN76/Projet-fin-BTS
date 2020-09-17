@@ -1,0 +1,21 @@
+
+#include <SoftwareSerial.h> // Déclaration de la bibliothèque "SoftwareSerial.h"
+SoftwareSerial xbee (3,2);// Rx, Tx
+
+//Innitialisation
+void setup() {
+  Serial.begin(9600); // Initialisation de la communication série à 9600 bauds
+  xbee.begin(9600);
+}
+
+//Fonctionnement
+void loop() {
+  if(xbee.available()){
+    while(xbee.available()){
+      Serial.write(xbee.read());
+    }
+  }
+  xbee.println("test");
+  delay(1000);
+}
+  
