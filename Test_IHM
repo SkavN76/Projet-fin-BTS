@@ -1,0 +1,38 @@
+  float Pot_amont   = 0;
+  float Pot_aval    = 0;
+  int alerte_recp = 0;
+void setup() {
+  Serial.begin(9600);
+}
+void loop() {
+  retour:
+  Pot_amont = analogRead(A0);
+  Pot_aval  = analogRead(A3);
+  Pot_aval  = (Pot_aval *10)/1023;
+  Pot_amont =(Pot_amont *10)/1023;
+  
+
+
+  
+  Serial.print("#9M");
+  Serial.print(Pot_amont);
+  Serial.println("<");
+
+  Serial.print("#2M" );
+  Serial.print(Pot_aval);
+  Serial.println("<");
+
+if (Pot_amont != Pot_aval )
+{
+
+  Serial.print("#3M");
+  Serial.print(3);
+  Serial.println("<");
+
+  Serial.print("#13M");
+  Serial.print(3);
+  Serial.println("<");
+}
+
+
+}
